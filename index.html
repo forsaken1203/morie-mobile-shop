@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Mobile-first base width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MORIÉ | Korean-Inspired Fashion</title>
+
+    <meta
+        name="description"
+        content="MORIÉ offers affordable Korean-inspired fashion for university students."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Promotional message -->
+    <div class="promo-bar">
+        Free delivery for orders above RM100
+    </div>
+
+    <!-- Main header -->
+    <header class="main-header">
+        <button
+            id="backButton"
+            class="icon-button hidden"
+            type="button"
+            aria-label="Go back"
+        >
+            ←
+        </button>
+
+        <button
+            class="brand-logo"
+            type="button"
+            data-page="home"
+            aria-label="Go to home page"
+        >
+            MORIÉ
+        </button>
+
+        <button
+            id="headerCartButton"
+            class="cart-button"
+            type="button"
+            data-page="cart"
+            aria-label="Open shopping cart"
+        >
+            Bag
+            <span id="headerCartCount" class="cart-count">0</span>
+        </button>
+    </header>
+
+    <main class="app-container">
+
+        <!-- =========================
+             HOME PAGE
+        ========================== -->
+        <section id="homePage" class="page active-page">
+
+            <div class="hero-section">
+                <div class="hero-overlay"></div>
+
+                <div class="hero-content">
+                    <p class="eyebrow">NEW SEMESTER COLLECTION</p>
+
+                    <h1>Simple Style,<br>Fresh Every Day.</h1>
+
+                    <p>
+                        Korean-inspired everyday fashion designed for
+                        university life.
+                    </p>
+
+                    <button
+                        class="primary-button"
+                        type="button"
+                        data-page="shop"
+                    >
+                        Shop the Collection
+                    </button>
+                </div>
+            </div>
+
+            <section class="content-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">EXPLORE</p>
+                        <h2>Shop by Category</h2>
+                    </div>
+                </div>
+
+                <div class="category-grid">
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="Tops"
+                    >
+                        <span class="category-icon">☁</span>
+                        <span>Tops</span>
+                    </button>
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="Bottoms"
+                    >
+                        <span class="category-icon">◇</span>
+                        <span>Bottoms</span>
+                    </button>
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="Outerwear"
+                    >
+                        <span class="category-icon">□</span>
+                        <span>Outerwear</span>
+                    </button>
+
+                    <button
+                        class="category-card"
+                        type="button"
+                        data-category="Accessories"
+                    >
+                        <span class="category-icon">○</span>
+                        <span>Accessories</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="content-section featured-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">JUST DROPPED</p>
+                        <h2>New Arrivals</h2>
+                    </div>
+
+                    <button
+                        class="text-button"
+                        type="button"
+                        data-page="shop"
+                    >
+                        View all
+                    </button>
+                </div>
+
+                <!-- Products will be inserted with JavaScript -->
+                <div id="featuredProducts" class="product-grid"></div>
+            </section>
+
+            <section class="student-banner">
+                <p class="eyebrow">MORIÉ STUDENT CLUB</p>
+                <h2>Style that fits student life.</h2>
+                <p>
+                    Join our student community and receive 10% off
+                    your first order.
+                </p>
+
+                <button
+                    class="secondary-button"
+                    type="button"
+                    data-page="shop"
+                >
+                    Discover More
+                </button>
+            </section>
+        </section>
+
+        <!-- =========================
+             PRODUCT LISTING PAGE
+        ========================== -->
+        <section id="shopPage" class="page">
+
+            <div class="page-introduction">
+                <p class="eyebrow">MORIÉ COLLECTION</p>
+                <h1>Shop All</h1>
+                <p>Fresh essentials for lectures, weekends and everything between.</p>
+            </div>
+
+            <div class="search-container">
+                <label class="sr-only" for="productSearch">
+                    Search products
+                </label>
+
+                <input
+                    id="productSearch"
+                    type="search"
+                    placeholder="Search tops, bags, trousers..."
+                    autocomplete="off"
+                >
+            </div>
+
+            <div
+                id="filterButtons"
+                class="filter-row"
+                aria-label="Product categories"
+            >
+                <button
+                    class="filter-button active-filter"
+                    type="button"
+                    data-filter="All"
+                >
+                    All
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-filter="Tops"
+                >
+                    Tops
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-filter="Bottoms"
+                >
+                    Bottoms
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-filter="Outerwear"
+                >
+                    Outerwear
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-filter="Accessories"
+                >
+                    Accessories
+                </button>
+            </div>
+
+            <div class="results-heading">
+                <p id="productResultText">8 products</p>
+
+                <select id="sortProducts" aria-label="Sort products">
+                    <option value="featured">Featured</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                </select>
+            </div>
+
+            <!-- Products will be inserted with JavaScript -->
+            <div id="allProducts" class="product-grid"></div>
+
+            <div id="noResults" class="empty-state hidden">
+                <div class="empty-icon">⌕</div>
+                <h2>No products found</h2>
+                <p>Try searching with another word or category.</p>
+            </div>
+        </section>
+
+        <!-- =========================
+             PRODUCT DETAIL PAGE
+        ========================== -->
+        <section id="detailPage" class="page">
+
+            <div class="detail-image-container">
+                <img
+                    id="detailImage"
+                    src=""
+                    alt="Selected MORIÉ product"
+                >
+
+                <span id="detailBadge" class="product-badge">
+                    NEW
+                </span>
+            </div>
+
+            <div class="detail-content">
+                <p id="detailCategory" class="eyebrow">CATEGORY</p>
+
+                <h1 id="detailName">Product Name</h1>
+
+                <p id="detailPrice" class="detail-price">RM0.00</p>
+
+                <div class="rating-row">
+                    <span class="stars">★★★★★</span>
+                    <span>4.8 · 36 reviews</span>
+                </div>
+
+                <p id="detailDescription" class="detail-description">
+                    Product description will appear here.
+                </p>
+
+                <div class="option-group">
+                    <div class="option-heading">
+                        <h3>Select Size</h3>
+                        <button
+                            class="text-button"
+                            id="sizeGuideButton"
+                            type="button"
+                        >
+                            Size guide
+                        </button>
+                    </div>
+
+                    <div id="sizeOptions" class="size-options">
+                        <button class="size-button" type="button" data-size="S">
+                            S
+                        </button>
+
+                        <button
+                            class="size-button selected-size"
+                            type="button"
+                            data-size="M"
+                        >
+                            M
+                        </button>
+
+                        <button class="size-button" type="button" data-size="L">
+                            L
+                        </button>
+
+                        <button class="size-button" type="button" data-size="XL">
+                            XL
+                        </button>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <h3>Quantity</h3>
+
+                    <div class="quantity-control">
+                        <button
+                            id="decreaseQuantity"
+                            type="button"
+                            aria-label="Decrease quantity"
+                        >
+                            −
+                        </button>
+
+                        <span id="detailQuantity">1</span>
+
+                        <button
+                            id="increaseQuantity"
+                            type="button"
+                            aria-label="Increase quantity"
+                        >
+                            +
+                        </button>
+                    </div>
+                </div>
+
+                <button
+                    id="addToCartButton"
+                    class="primary-button full-width-button"
+                    type="button"
+                >
+                    Add to Bag
+                </button>
+
+                <div class="service-list">
+                    <div class="service-item">
+                        <span>✓</span>
+                        <p>Free delivery above RM100</p>
+                    </div>
+
+                    <div class="service-item">
+                        <span>✓</span>
+                        <p>Easy returns within 14 days</p>
+                    </div>
+
+                    <div class="service-item">
+                        <span>✓</span>
+                        <p>Secure online checkout</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             CART PAGE
+        ========================== -->
+        <section id="cartPage" class="page">
+
+            <div class="page-introduction">
+                <p class="eyebrow">YOUR SELECTION</p>
+                <h1>Shopping Bag</h1>
+                <p id="cartSubtitle">Your bag is currently empty.</p>
+            </div>
+
+            <div id="emptyCart" class="empty-state">
+                <div class="empty-icon">Bag</div>
+                <h2>Your bag feels light</h2>
+                <p>Explore our latest Korean-inspired essentials.</p>
+
+                <button
+                    class="primary-button"
+                    type="button"
+                    data-page="shop"
+                >
+                    Start Shopping
+                </button>
+            </div>
+
+            <div id="filledCart" class="hidden">
+
+                <!-- Cart items will be inserted with JavaScript -->
+                <div id="cartItems" class="cart-items"></div>
+
+                <div class="promo-code-box">
+                    <label for="promoCode">Promo code</label>
+
+                    <div class="promo-input-row">
+                        <input
+                            id="promoCode"
+                            type="text"
+                            placeholder="Try STUDENT10"
+                        >
+
+                        <button
+                            id="applyPromoButton"
+                            class="secondary-button"
+                            type="button"
+                        >
+                            Apply
+                        </button>
+                    </div>
+
+                    <p id="promoMessage" class="form-message"></p>
+                </div>
+
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal">RM0.00</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <span id="deliveryFee">RM8.00</span>
+                    </div>
+
+                    <div
+                        id="discountRow"
+                        class="summary-row discount-row hidden"
+                    >
+                        <span>Student discount</span>
+                        <span id="discountAmount">−RM0.00</span>
+                    </div>
+
+                    <div class="summary-row summary-total">
+                        <span>Total</span>
+                        <span id="cartTotal">RM0.00</span>
+                    </div>
+
+                    <button
+                        class="primary-button full-width-button"
+                        type="button"
+                        data-page="checkout"
+                    >
+                        Continue to Checkout
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             CHECKOUT PAGE
+        ========================== -->
+        <section id="checkoutPage" class="page">
+
+            <div class="page-introduction">
+                <p class="eyebrow">SECURE CHECKOUT</p>
+                <h1>Complete Your Order</h1>
+                <p>Enter your delivery and payment information.</p>
+            </div>
+
+            <form id="checkoutForm">
+
+                <div class="form-card">
+                    <h2>1. Contact Information</h2>
+
+                    <label for="customerName">Full name</label>
+                    <input
+                        id="customerName"
+                        name="customerName"
+                        type="text"
+                        placeholder="Your full name"
+                        required
+                    >
+
+                    <label for="customerEmail">Email address</label>
+                    <input
+                        id="customerEmail"
+                        name="customerEmail"
+                        type="email"
+                        placeholder="student@example.com"
+                        required
+                    >
+
+                    <label for="customerPhone">Phone number</label>
+                    <input
+                        id="customerPhone"
+                        name="customerPhone"
+                        type="tel"
+                        placeholder="012-345 6789"
+                        required
+                    >
+                </div>
+
+                <div class="form-card">
+                    <h2>2. Delivery Address</h2>
+
+                    <label for="addressLine">Address</label>
+                    <input
+                        id="addressLine"
+                        name="addressLine"
+                        type="text"
+                        placeholder="Building and street"
+                        required
+                    >
+
+                    <div class="two-column-form">
+                        <div>
+                            <label for="city">City</label>
+                            <input
+                                id="city"
+                                name="city"
+                                type="text"
+                                placeholder="Kuala Lumpur"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="postcode">Postcode</label>
+                            <input
+                                id="postcode"
+                                name="postcode"
+                                type="text"
+                                placeholder="50000"
+                                required
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <h2>3. Payment Method</h2>
+
+                    <label class="payment-option">
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="card"
+                            checked
+                        >
+                        <span>
+                            <strong>Credit or Debit Card</strong>
+                            <small>Visa, Mastercard and MyDebit</small>
+                        </span>
+                    </label>
+
+                    <label class="payment-option">
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="ewallet"
+                        >
+                        <span>
+                            <strong>Mobile E-Wallet</strong>
+                            <small>Touch 'n Go eWallet or GrabPay</small>
+                        </span>
+                    </label>
+
+                    <label class="payment-option">
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="banking"
+                        >
+                        <span>
+                            <strong>Online Banking</strong>
+                            <small>FPX secure payment</small>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="checkout-summary form-card">
+                    <h2>Order Total</h2>
+
+                    <div class="summary-row">
+                        <span>Items</span>
+                        <span id="checkoutSubtotal">RM0.00</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <span id="checkoutDelivery">RM0.00</span>
+                    </div>
+
+                    <div class="summary-row summary-total">
+                        <span>Total Payment</span>
+                        <span id="checkoutTotal">RM0.00</span>
+                    </div>
+                </div>
+
+                <button
+                    class="primary-button full-width-button"
+                    type="submit"
+                >
+                    Place Order Securely
+                </button>
+
+                <p class="secure-message">
+                    By placing your order, you agree to MORIÉ's terms
+                    and privacy policy.
+                </p>
+            </form>
+        </section>
+
+        <!-- =========================
+             ORDER SUCCESS PAGE
+        ========================== -->
+        <section id="successPage" class="page">
+
+            <div class="success-card">
+                <div class="success-icon">✓</div>
+
+                <p class="eyebrow">ORDER CONFIRMED</p>
+
+                <h1>Thank you for shopping with MORIÉ!</h1>
+
+                <p>
+                    Your order has been received. A confirmation email
+                    will be sent to you shortly.
+                </p>
+
+                <div class="order-number-box">
+                    <span>Order number</span>
+                    <strong id="orderNumber">MR000000</strong>
+                </div>
+
+                <button
+                    class="primary-button full-width-button"
+                    type="button"
+                    data-page="home"
+                >
+                    Return to Home
+                </button>
+            </div>
+        </section>
+
+        <!-- =========================
+             PROFILE PLACEHOLDER
+        ========================== -->
+        <section id="profilePage" class="page">
+
+            <div class="page-introduction">
+                <p class="eyebrow">MORIÉ MEMBER</p>
+                <h1>My Account</h1>
+                <p>Sign in to view your orders and student rewards.</p>
+            </div>
+
+            <div class="form-card">
+                <h2>Student Member Benefits</h2>
+
+                <div class="service-list">
+                    <div class="service-item">
+                        <span>✓</span>
+                        <p>10% student member discount</p>
+                    </div>
+
+                    <div class="service-item">
+                        <span>✓</span>
+                        <p>Early access to new collections</p>
+                    </div>
+
+                    <div class="service-item">
+                        <span>✓</span>
+                        <p>Faster checkout experience</p>
+                    </div>
+                </div>
+
+                <button
+                    class="primary-button full-width-button"
+                    type="button"
+                >
+                    Sign In
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom mobile navigation -->
+    <nav class="bottom-navigation" aria-label="Main navigation">
+
+        <button
+            class="nav-button active-nav"
+            type="button"
+            data-page="home"
+        >
+            <span class="nav-icon">⌂</span>
+            <span>Home</span>
+        </button>
+
+        <button
+            class="nav-button"
+            type="button"
+            data-page="shop"
+        >
+            <span class="nav-icon">▦</span>
+            <span>Shop</span>
+        </button>
+
+        <button
+            class="nav-button"
+            type="button"
+            data-page="cart"
+        >
+            <span class="nav-icon">□</span>
+            <span>Bag</span>
+            <span id="bottomCartCount" class="nav-cart-count hidden">0</span>
+        </button>
+
+        <button
+            class="nav-button"
+            type="button"
+            data-page="profile"
+        >
+            <span class="nav-icon">○</span>
+            <span>Profile</span>
+        </button>
+
+    </nav>
+
+    <!-- Temporary notification -->
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+    >
+        Product added to your bag
+    </div>
+
+    <!-- Size guide modal -->
+    <div id="sizeGuideModal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button
+                id="closeSizeGuide"
+                class="modal-close"
+                type="button"
+                aria-label="Close size guide"
+            >
+                ×
+            </button>
+
+            <p class="eyebrow">MORIÉ SIZE GUIDE</p>
+            <h2>Find Your Size</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Size</th>
+                        <th>Chest</th>
+                        <th>Waist</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>S</td>
+                        <td>84–90 cm</td>
+                        <td>66–72 cm</td>
+                    </tr>
+
+                    <tr>
+                        <td>M</td>
+                        <td>90–96 cm</td>
+                        <td>72–78 cm</td>
+                    </tr>
+
+                    <tr>
+                        <td>L</td>
+                        <td>96–102 cm</td>
+                        <td>78–84 cm</td>
+                    </tr>
+
+                    <tr>
+                        <td>XL</td>
+                        <td>102–108 cm</td>
+                        <td>84–90 cm</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
